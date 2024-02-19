@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Task from "../Task/Task";
 import "./TaskList.css";
-
-const TaslList = ({ tasks }) => {
+   
+const TaskList = ({ tasks }) => {
   const [tasklist, setTasklist] = useState(tasks);
 
   const handleDelete = (index) => {
@@ -29,4 +29,4 @@ const TaslList = ({ tasks }) => {
   );
 };
 
-export default TaslList;
+export default TaskList;

@@ -21,7 +21,7 @@ const Task = ({ number, description, status, onDelete }) => {
       <Button
         onClick={onDelete}
         variant="outlined"
-        startIcon={<DeleteIcon />}
+        endIcon={<DeleteIcon />}
       >
         Remove
       </Button>
