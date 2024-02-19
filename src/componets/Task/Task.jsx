@@ -7,7 +7,7 @@ import EditIcon from "@mui/icons-material/Edit";
 // <Stack direction="row" spacing={2}>
 // </Stack>
 
-const Task = ({ number, description, status }) => {
+const Task = ({ number, description, status, onDelete }) => {
   return (
     <li>
       {number}
@@ -18,8 +18,12 @@ const Task = ({ number, description, status }) => {
       <Button variant="outlined" endIcon={<EditIcon />}>
         Edit
       </Button>
-      <Button variant="outlined" startIcon={<DeleteIcon />}>
-        Delete
+      <Button
+        onClick={onDelete}
+        variant="outlined"
+        startIcon={<DeleteIcon />}
+      >
+        Remove
       </Button>
     </li>
   );

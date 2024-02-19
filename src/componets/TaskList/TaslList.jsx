@@ -1,18 +1,27 @@
-import React from "react";
-import { taskSearchResult } from "../../constant/mock";
+import React, { useState } from "react";
 import Task from "../Task/Task";
-import './TaskList.css'
+import "./TaskList.css";
 
-const TaslList = () => {
+const TaslList = ({ tasks }) => {
+  const [tasklist, setTasklist] = useState(tasks);
+
+  const handleDelete = (index) => {
+    const updatedTasks = tasklist.filter((item, i) => i !== index);
+    setTasklist(updatedTasks);
+  };
+
   return (
     <div>
       <ul>
-        {taskSearchResult.map((element, index) => (
+        {tasklist.map((element, index) => (
           <Task
             key={index}
             number={element.number}
             description={element.description}
             status={element.status}
+            onDelete={() => {
+              handleDelete(index);
+            }}
           />
         ))}
       </ul>
