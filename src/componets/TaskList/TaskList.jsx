@@ -8,38 +8,34 @@ import HeaderOfTaskList from "../HeaderOfTaskList/HeaderOfTaskList";
 const TaskList = () => {
   const [tasklist, setTasklist] = useState([]);
 
+  //useEffect(() => {}, [tasklist]);
+
   const addTask = (task) => {
     setTasklist([
       ...tasklist,
       {
         id: uuidv4(),
         description: task,
-        isEditing: false,
-        completed: false,
+        completed: true,
         status: false,
+        number: 1,
       },
     ]);
     console.log(tasklist);
   };
-  const toggleComplete = (id) => {
-    setTasklist(
-      tasklist.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
 
   const handleDelete = (id) => {
-    const updatedTasks = tasklist.filter((item, i) => i !== id);
-    setTasklist(updatedTasks);
+    setTasklist(tasklist.filter((task) => task.id !== id));
   };
+  // const handleDelete = (index) => {
+  //   setTasklist(tasklist.filter((item, i) => i !== index));
+  // };?????????????????
 
   const handleEdit = (id) => {
     const updatedTasks = tasklist.map((todo) =>
       todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
     );
     setTasklist(updatedTasks);
-    console.log("!!!!");
   };
 
   return (
@@ -49,11 +45,12 @@ const TaskList = () => {
       <ul>
         {tasklist.map((task) => (
           <Task
+            number={task.number++}
             key={task.id}
             description={task.description}
             onEdit={() => handleEdit(task.id)}
             onDelete={() => handleDelete(task.id)}
-            toggleComplete={() => toggleComplete(task.id)}
+            completed={task.completed}
           />
         ))}
       </ul>

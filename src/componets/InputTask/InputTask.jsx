@@ -6,7 +6,10 @@ const InputTask = ({ addTask }) => {
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
-    e.preventDefault();
+    //e.preventDefault(); ?????
+    if (e === "Enter") {
+      addTask(value);
+    }
     if (value) {
       addTask(value);
     }
