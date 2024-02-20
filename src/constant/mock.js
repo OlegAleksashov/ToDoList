@@ -27,7 +27,7 @@ export const taskSearchResult = [
 
   {
     number: 6,
-    description: "Brush theeth",
+    description: "Brush teeth",
     status: "TODO",
   },
 ];

@@ -3,26 +3,18 @@ import "./Task.css";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-// import Stack from "@mui/material/Stack";
-// <Stack direction="row" spacing={2}>
-// </Stack>
 
-const Task = ({ number, description, status, onDelete }) => {
+const Task = ({ description, onDelete, onEdit, toggleComplete }) => {
   return (
     <li>
-      {number}
-      <p>
-        <strong>{description}</strong>
+      <p onClick={() => toggleComplete(description.id)}>
+        <strong>{description.description}</strong>
       </p>
-      {status}
-      <Button variant="outlined" endIcon={<EditIcon />}>
+      {description.description}
+      <Button onClick={onEdit} variant="outlined" endIcon={<EditIcon />}>
         Edit
       </Button>
-      <Button
-        onClick={onDelete}
-        variant="outlined"
-        endIcon={<DeleteIcon />}
-      >
+      <Button onClick={onDelete} variant="outlined" endIcon={<DeleteIcon />}>
         Remove
       </Button>
     </li>

@@ -1,27 +1,59 @@
 import React, { useState } from "react";
 import Task from "../Task/Task";
 import "./TaskList.css";
-   
-const TaskList = ({ tasks }) => {
-  const [tasklist, setTasklist] = useState(tasks);
+import { v4 as uuidv4 } from "uuid";
+import InputTask from "../InputTask/InputTask";
+import HeaderOfTaskList from "../HeaderOfTaskList/HeaderOfTaskList";
 
-  const handleDelete = (index) => {
-    const updatedTasks = tasklist.filter((item, i) => i !== index);
+const TaskList = () => {
+  const [tasklist, setTasklist] = useState([]);
+
+  const addTask = (task) => {
+    setTasklist([
+      ...tasklist,
+      {
+        id: uuidv4(),
+        description: task,
+        isEditing: false,
+        completed: false,
+        status: false,
+      },
+    ]);
+    console.log(tasklist);
+  };
+  const toggleComplete = (id) => {
+    setTasklist(
+      tasklist.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  const handleDelete = (id) => {
+    const updatedTasks = tasklist.filter((item, i) => i !== id);
     setTasklist(updatedTasks);
+  };
+
+  const handleEdit = (id) => {
+    const updatedTasks = tasklist.map((todo) =>
+      todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+    );
+    setTasklist(updatedTasks);
+    console.log("!!!!");
   };
 
   return (
     <div>
+      <InputTask addTask={addTask} />
+      <HeaderOfTaskList />
       <ul>
-        {tasklist.map((element, index) => (
+        {tasklist.map((task) => (
           <Task
-            key={index}
-            number={element.number}
-            description={element.description}
-            status={element.status}
-            onDelete={() => {
-              handleDelete(index);
-            }}
+            key={task.id}
+            description={task.description}
+            onEdit={() => handleEdit(task.id)}
+            onDelete={() => handleDelete(task.id)}
+            toggleComplete={() => toggleComplete(task.id)}
           />
         ))}
       </ul>
