@@ -3,7 +3,7 @@ div ul li {
   justify-content: space-between;
   border: 1px solid #ccc;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   margin-top: 0.3rem;
   margin-bottom: 0.5rem;
   align-items: center;
@@ -12,5 +12,4 @@ div ul li {
 div ul {
   list-style: none;
   padding-inline-start: 0;
-  
 }

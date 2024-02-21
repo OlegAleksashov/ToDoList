@@ -14,7 +14,8 @@ const TaskList = () => {
       {
         id: uuidv4(),
         name: task,
-        isCompleted: true,
+        isCompleted: "To do",
+        isEditing: false,
         status: false,
         number: tasklist.length + 1,
       },
@@ -27,10 +28,11 @@ const TaskList = () => {
   };
 
   const handleEdit = (id) => {
-    const updatedTasks = tasklist.map((todo) =>
-      todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+    setTasklist(
+      tasklist.map((todo) =>
+        todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+      )
     );
-    setTasklist(updatedTasks);
   };
 
   return (
@@ -46,6 +48,7 @@ const TaskList = () => {
             onEdit={() => handleEdit(task.id)}
             onDelete={() => handleDelete(task.id)}
             completed={task.isCompleted}
+            isEditing={task.isEditing}
           />
         ))}
       </ul>
