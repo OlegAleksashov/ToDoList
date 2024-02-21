@@ -8,9 +8,7 @@ const Task = ({ name, onDelete, onEdit, completed, number }) => {
   return (
     <li>
       {number}
-      <p>
-        <strong>{name}</strong>
-      </p>
+      <p>{name}</p>
       {completed}
       <Button onClick={onEdit} variant="outlined" endIcon={<EditIcon />}>
         Edit

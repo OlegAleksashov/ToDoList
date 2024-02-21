@@ -17,7 +17,7 @@ const InputTask = ({ addTask }) => {
   };
 
   return (
-    <section className="sectioninput">
+    <div className="sectioninput">
       <input
         value={value}
         type="text"
@@ -28,7 +28,7 @@ const InputTask = ({ addTask }) => {
       <Button variant="outlined" onClick={handleChange}>
         Add Task
       </Button>
-    </section>
+    </div>
   );
 };
 

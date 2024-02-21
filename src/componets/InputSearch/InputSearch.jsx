@@ -3,9 +3,9 @@ import "./InputSearch.css";
 
 const InputSearch = () => {
   return (
-    <section className="sectionsearch">
+    <div className="sectionsearch">
       <input type="text" className="control"></input>
-    </section>
+    </div>
   );
 };
 

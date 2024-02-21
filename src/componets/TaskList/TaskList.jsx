@@ -8,15 +8,13 @@ import HeaderOfTaskList from "../HeaderOfTaskList/HeaderOfTaskList";
 const TaskList = () => {
   const [tasklist, setTasklist] = useState([]);
 
-  //useEffect(() => {}, [tasklist]);
-
   const addTask = (task) => {
     setTasklist([
       ...tasklist,
       {
         id: uuidv4(),
         name: task,
-        completed: true,
+        isCompleted: true,
         status: false,
         number: tasklist.length + 1,
       },
@@ -47,7 +45,7 @@ const TaskList = () => {
             name={task.name}
             onEdit={() => handleEdit(task.id)}
             onDelete={() => handleDelete(task.id)}
-            completed={task.completed}
+            completed={task.isCompleted}
           />
         ))}
       </ul>
