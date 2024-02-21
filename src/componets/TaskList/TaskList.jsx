@@ -15,10 +15,10 @@ const TaskList = () => {
       ...tasklist,
       {
         id: uuidv4(),
-        description: task,
+        name: task,
         completed: true,
         status: false,
-        number: 1,
+        number: tasklist.length + 1,
       },
     ]);
     console.log(tasklist);
@@ -45,9 +45,9 @@ const TaskList = () => {
       <ul>
         {tasklist.map((task) => (
           <Task
-            number={task.number++}
+            number={task.number}
             key={task.id}
-            description={task.description}
+            name={task.name}
             onEdit={() => handleEdit(task.id)}
             onDelete={() => handleDelete(task.id)}
             completed={task.completed}

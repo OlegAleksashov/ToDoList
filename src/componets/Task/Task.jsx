@@ -4,12 +4,12 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-const Task = ({ description, onDelete, onEdit, completed, number }) => {
+const Task = ({ name, onDelete, onEdit, completed, number }) => {
   return (
     <li>
       {number}
       <p>
-        <strong>{description}</strong>
+        <strong>{name}</strong>
       </p>
       {completed}
       <Button onClick={onEdit} variant="outlined" endIcon={<EditIcon />}>

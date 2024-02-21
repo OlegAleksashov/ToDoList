@@ -7,9 +7,9 @@ const InputTask = ({ addTask }) => {
 
   const handleChange = (e) => {
     //e.preventDefault(); ?????
-    if (e === "Enter") {
-      addTask(value);
-    }
+    // if (e === "Enter") {
+    //   addTask(value);
+    // } I wanted to add an event listener that has to react when user presses 'Enter' key
     if (value) {
       addTask(value);
     }
