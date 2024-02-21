@@ -27,9 +27,6 @@ const TaskList = () => {
   const handleDelete = (id) => {
     setTasklist(tasklist.filter((task) => task.id !== id));
   };
-  // const handleDelete = (index) => {
-  //   setTasklist(tasklist.filter((item, i) => i !== index));
-  // };?????????????????
 
   const handleEdit = (id) => {
     const updatedTasks = tasklist.map((todo) =>
