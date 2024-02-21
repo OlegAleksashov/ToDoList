@@ -14,9 +14,9 @@ const TaskList = () => {
       {
         id: uuidv4(),
         name: task,
-        isCompleted: "To do",
+        isCompleted: false,
         isEditing: false,
-        status: false,
+        status: "To do",
         number: tasklist.length + 1,
       },
     ]);
@@ -47,8 +47,9 @@ const TaskList = () => {
             name={task.name}
             onEdit={() => handleEdit(task.id)}
             onDelete={() => handleDelete(task.id)}
-            completed={task.isCompleted}
+            isCompleted={task.isCompleted}
             isEditing={task.isEditing}
+            status={task.status}
           />
         ))}
       </ul>
