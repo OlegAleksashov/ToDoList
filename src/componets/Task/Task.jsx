@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Task.css";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { TaskListContext } from "../../context/TaskListContext";
 
 const Task = ({ task, onDelete, onEdit }) => {
+  const { setTasklist } = useContext(TaskListContext);
+
   return (
     <li>
       {task.isEditing ? (
@@ -12,7 +15,16 @@ const Task = ({ task, onDelete, onEdit }) => {
           className="edittask"
           type="text"
           value={task.name}
-          onChange={(e) => (task.name += e.target.value)}
+          onChange={(e) => {
+            const newName = e.target.value;
+            setTasklist((prevTaskList) =>
+              prevTaskList.map((prevTask) =>
+                prevTask.id === task.id
+                  ? { ...prevTask, name: newName }
+                  : prevTask
+              )
+            );
+          }}
         />
       ) : (
         <>
