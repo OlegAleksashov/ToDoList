@@ -21,7 +21,7 @@ const InputTask = ({ addTask }) => {
       <input
         value={value}
         type="text"
-        className="control"
+        id="typetask"
         placeholder="What are you gonna do?"
         onChange={(e) => setValue(e.target.value)}
       ></input>

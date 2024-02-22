@@ -42,14 +42,10 @@ const TaskList = () => {
       <ul>
         {tasklist.map((task) => (
           <Task
-            number={task.number}
+            task={task}
             key={task.id}
-            name={task.name}
             onEdit={() => handleEdit(task.id)}
             onDelete={() => handleDelete(task.id)}
-            isCompleted={task.isCompleted}
-            isEditing={task.isEditing}
-            status={task.status}
           />
         ))}
       </ul>

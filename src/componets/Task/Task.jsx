@@ -4,22 +4,27 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-const Task = ({ name, onDelete, onEdit, isCompleted, number, isEditing, status }) => {
+const Task = ({ task, onDelete, onEdit }) => {
   return (
     <li>
-      {isEditing ? (
-        <input type="text" value={name} onChange={(e) => e.target.value} />
+      {task.isEditing ? (
+        <input
+          className="edittask"
+          type="text"
+          value={task.name}
+          onChange={(e) => (task.name += e.target.value)}
+        />
       ) : (
         <>
-          {number}
-          <p>{name}</p>
-          {isCompleted}
-          {status}
+          {task.number}
+          <p>{task.name}</p>
+          {task.isCompleted}
+          {task.status}
         </>
       )}
 
       <Button onClick={onEdit} variant="outlined" endIcon={<EditIcon />}>
-        {isEditing ? "Save" : "Edit"}
+        {task.isEditing ? "Save" : "Edit"}
       </Button>
       <Button onClick={onDelete} variant="outlined" endIcon={<DeleteIcon />}>
         Remove
