@@ -8,7 +8,7 @@ export function changeReducer(state = initialState, action) {
     case UPDATE_TASK:
       return {
         ...state,
-        tasks: state.tasks.map((prevTask) =>
+        title: state.title.map((prevTask) =>
           prevTask.id === action.payload.id
             ? { ...prevTask, name: action.payload.newName }
             : prevTask
