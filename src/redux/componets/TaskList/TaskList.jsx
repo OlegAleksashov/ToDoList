@@ -3,12 +3,12 @@ import InputTask from "../InputTask/InputTask";
 import HeaderOfTaskList from "../HeaderOfTaskList/HeaderOfTaskList";
 import Task from "../Task/Task";
 import { useDispatch, useSelector } from "react-redux";
-import { removeTask, addTask } from "../../../redux/store/actions";
+import { removeTask, addTask } from "../../store/actions";
 import "./TaskList.css";
 
 export const TaskList = () => {
   const dispatch = useDispatch();
-  const task = useSelector((state) => state.tasklist);
+  const tasks = useSelector((state) => state.tasklist);
 
   const handleDelete = (id) => {
     dispatch(removeTask(id));
@@ -23,7 +23,7 @@ export const TaskList = () => {
       <InputTask addTask={handleAddTask} />
       <HeaderOfTaskList />
       <ul>
-        {task.map((task) => (
+        {tasks.map((task) => (
           <Task
             task={task}
             key={task.id}

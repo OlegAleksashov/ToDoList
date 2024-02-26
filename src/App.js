@@ -16,12 +16,12 @@
 
 //  export default App;
 
-import InputSearch from "../src/redux/componets/InputSearch/InputSearch";
-import Header from "../src/redux/componets/Header/Header";
-import "./App.css";
-import { TaskList } from "../src/redux/componets/TaskList/TaskLisr";
 import { Provider } from "react-redux";
 import store from "../src/redux/store/index";
+import Header from "../src/redux/componets/Header/Header";
+import { TaskList } from "./redux/componets/TaskList/TaskList";
+import InputSearch from "../src/redux/componets/InputSearch/InputSearch";
+import "./App.css";
 
 function App() {
   return (
