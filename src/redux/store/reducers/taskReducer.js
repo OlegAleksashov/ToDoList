@@ -1,8 +1,8 @@
-import { ADD_TASK, REMOVE_TASK, EDIT_TASK } from "../actionsTypes";
+import { ADD_TASK, REMOVE_TASK, UPDATE_TASK } from "../actionsTypes";
 import { v4 as uuidv4 } from "uuid";
 
 export const initialState = {
-  title: [],
+  tasklist: [], //tasklist
 };
 
 export function taskReducer(state = initialState, action) {
@@ -10,15 +10,15 @@ export function taskReducer(state = initialState, action) {
     case ADD_TASK:
       return {
         ...state,
-        title: [
-           ...state.title,
+        tasklist: [
+          ...state.tasklist,
           {
             id: uuidv4(),
-            name: action.payload,
+            title: action.payload,
             isCompleted: false,
             isEditing: false,
             status: "To do",
-            number: state.title.length + 1,
+            number: state.tasklist.length + 1,
           },
         ],
       };
@@ -26,16 +26,16 @@ export function taskReducer(state = initialState, action) {
     case REMOVE_TASK:
       return {
         ...state,
-        title: state.title.filter((todo) => action.payload !== todo.id),
+        tasklist: state.tasklist.filter((todo) => action.payload !== todo.id),
       };
 
-    case EDIT_TASK:
+    case UPDATE_TASK:
       return {
         ...state,
-        title: state.title.map((todo) =>
-          todo.id === action.payload
-            ? { ...todo, isEditing: !todo.isEditing }
-            : todo
+        tasklist: state.tasklist.map((prevTask) =>
+          prevTask.id === action.payload.id
+            ? { ...prevTask, title: action.payload.newTitle }
+            : prevTask
         ),
       };
 

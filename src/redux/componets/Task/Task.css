@@ -1,17 +1,17 @@
 li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  li p {
-    font-weight: bolder;
-  }
-  
-  .edittask {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    width: 50%;
-    margin: 0 1rem 0 0;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li p {
+  font-weight: bolder;
+}
+
+#edittask {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  width: 50%;
+  margin: 0 1rem 0 0;
+}
