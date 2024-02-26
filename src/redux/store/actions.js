@@ -12,5 +12,5 @@ export const removeTask = (id) => ({
 
 export const updateTask = (id, title) => ({
   type: UPDATE_TASK,
-  payload: { id, newName: title },
+  payload: { id, newTitle: title },
 });

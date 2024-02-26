@@ -15,8 +15,8 @@ const Task = ({ task, onDelete }) => {
     setIsEditing(!isEditing);
   };
 
-  const onSaveClicked = (title) => {
-    dispatch(updateTask(title.id, inputValue));
+  const onSaveClicked = () => {
+    dispatch(updateTask(task.id, inputValue));
     setIsEditing(!isEditing);
   };
 
@@ -28,8 +28,6 @@ const Task = ({ task, onDelete }) => {
           type="text"
           value={inputValue}
           onChange={(e) => {
-            // const newName = e.target.value; // setInputValue
-            // dispatch(updateTask(task.id, newName));
             setInputValue(e.target.value);
           }}
         />
