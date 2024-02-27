@@ -1,18 +1,26 @@
 import React, { useState } from "react";
-import "./Task.css";
+import { useDispatch } from "react-redux";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { useDispatch } from "react-redux";
+import { Checkbox } from "@mui/material";
 import { updateTask } from "../../store/actions";
+import "./Task.css";
 
 const Task = ({ task, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState(task.title);
+  const [theme, setTheme] = useState("dark");
   const dispatch = useDispatch();
 
   const onEdit = () => {
     setIsEditing(!isEditing);
+  };
+
+  const onCheckBoxClicked = () => {
+    if (!task.isCompleted) {
+      setTheme(theme === "light" ? "dark" : "light");
+    }
   };
 
   const onSaveClicked = () => {
@@ -21,7 +29,7 @@ const Task = ({ task, onDelete }) => {
   };
 
   return (
-    <li>
+    <li className={theme}>
       {isEditing ? (
         <input
           id="edittask"
@@ -35,8 +43,7 @@ const Task = ({ task, onDelete }) => {
         <>
           {task.number}
           <p>{task.title}</p>
-          {task.isCompleted}
-          {task.status}
+          <Checkbox onClick={onCheckBoxClicked} />
         </>
       )}
       {!isEditing ? (

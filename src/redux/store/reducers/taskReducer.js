@@ -17,7 +17,6 @@ export function taskReducer(state = initialState, action) {
             title: action.payload,
             isCompleted: false,
             isEditing: false,
-            status: "To do",
             number: state.tasklist.length + 1,
           },
         ],

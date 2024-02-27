@@ -2,7 +2,7 @@ import { ADD_TASK, REMOVE_TASK, UPDATE_TASK } from "./actionsTypes";
 
 export const addTask = (title) => ({
   type: ADD_TASK,
-  payload: title, //title
+  payload: title,
 });
 
 export const removeTask = (id) => ({

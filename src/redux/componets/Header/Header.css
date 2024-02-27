@@ -6,4 +6,5 @@ header {
     border-bottom: 1px solid #ccc;
     background: #fafafa;
     margin-bottom: 0.5rem;
+    border-radius: 5px;
   }
