@@ -2,6 +2,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid black;
 }
 
 li p {
@@ -19,9 +20,12 @@ li p {
 .dark {
   background-color: rgb(199 210 254);
   color: black;
+  border: 2px solid whitesmoke;
 }
 
 .light {
-  background-color: #111827;
+  background-color: rgb(77, 96, 182);
   color: white;
+  text-decoration-line: line-through;
+  border: 2px solid whitesmoke;
 }

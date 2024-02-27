@@ -24,7 +24,7 @@ const InputTask = ({ addTask }) => {
         id="typetask"
         placeholder="What are you gonna do?"
         onChange={(e) => setValue(e.target.value)}
-      ></input>
+      />
       <Button variant="outlined" onClick={handleChange}>
         Add Task
       </Button>
