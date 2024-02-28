@@ -5,15 +5,17 @@ import Button from "@mui/material/Button";
 const InputTask = ({ addTask }) => {
   const [value, setValue] = useState("");
 
-  const handleChange = (e) => {
-    //e.preventDefault(); ?????
-    // if (e === "Enter") {
-    //   addTask(value);
-    // } I wanted to add an event listener that has to react when user presses 'Enter' key
+  const handleChange = () => {
     if (value) {
       addTask(value);
     }
     setValue("");
+  };
+
+  const isEnterButtonClicked = (e) => {
+    if (e.key === "Enter") {
+      addTask(value);
+    }
   };
 
   return (
@@ -24,6 +26,7 @@ const InputTask = ({ addTask }) => {
         id="typetask"
         placeholder="What are you gonna do?"
         onChange={(e) => setValue(e.target.value)}
+        onKeyDown={isEnterButtonClicked}
       />
       <Button variant="outlined" onClick={handleChange}>
         Add Task

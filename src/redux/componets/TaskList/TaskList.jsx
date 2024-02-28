@@ -12,11 +12,17 @@ export const TaskList = () => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasklist);
   const input = useInput();
+  // const [isTaskListEmpty, setIsTaskListEmpty] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+
+  // useEffect(() => {
+  //   setIsTaskListEmpty(filteredTasks.length === 0);
+  // }, [searchTerm, tasks]);
 
   const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   const isTaskListEmpty = filteredTasks.length === 0;
 
   const handleInputChange = (value) => {
