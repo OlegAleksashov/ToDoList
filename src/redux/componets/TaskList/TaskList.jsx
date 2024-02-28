@@ -12,13 +12,12 @@ export const TaskList = () => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasklist);
   const input = useInput();
-  const [isTaskListEmpty, setIsTaskListEmpty] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  console.log(isTaskListEmpty);
 
   const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  const isTaskListEmpty = filteredTasks.length === 0;
 
   const handleInputChange = (value) => {
     setSearchTerm(value);
@@ -30,8 +29,6 @@ export const TaskList = () => {
 
   const handleAddTask = (tasklist) => {
     dispatch(addTask(tasklist));
-    setIsTaskListEmpty(!isTaskListEmpty);
-    console.log(isTaskListEmpty);
   };
 
   return (
@@ -39,7 +36,7 @@ export const TaskList = () => {
       <InputTask addTask={handleAddTask} />
       <InputSearch onInputChange={handleInputChange} />
       <HeaderOfTaskList />
-      {!isTaskListEmpty && (
+      {!isTaskListEmpty ? (
         <ul>
           {filteredTasks
             .filter((task) =>
@@ -53,8 +50,7 @@ export const TaskList = () => {
               />
             ))}
         </ul>
-      )}
-      {isTaskListEmpty && (
+      ) : (
         <ul>
           {tasks.map((task) => (
             <Task
