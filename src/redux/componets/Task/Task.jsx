@@ -28,12 +28,6 @@ const Task = ({ task, onDelete }) => {
     setIsEditing(!isEditing);
   };
 
-  const isEnterButtonClicked = (e) => {
-    if (e.key === "Enter" && isEditing) {
-      onSaveClicked();
-    }
-  };
-
   return (
     <li className={theme}>
       {isEditing ? (
@@ -44,7 +38,11 @@ const Task = ({ task, onDelete }) => {
           onChange={(e) => {
             setInputValue(e.target.value);
           }}
-          onKeyDown={isEnterButtonClicked}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && isEditing) {
+              onSaveClicked();
+            }
+          }}
         />
       ) : (
         <>

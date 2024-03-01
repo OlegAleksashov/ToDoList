@@ -15,6 +15,7 @@ const InputTask = ({ addTask }) => {
   const isEnterButtonClicked = (e) => {
     if (e.key === "Enter") {
       addTask(value);
+      setValue("");
     }
   };
 

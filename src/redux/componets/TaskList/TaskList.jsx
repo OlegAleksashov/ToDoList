@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputTask from "../InputTask/InputTask";
 import HeaderOfTaskList from "../HeaderOfTaskList/HeaderOfTaskList";
 import Task from "../Task/Task";
@@ -12,14 +12,21 @@ export const TaskList = () => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasklist);
   const input = useInput();
-  // const [isTaskListEmpty, setIsTaskListEmpty] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // useEffect(() => {
-  //   setIsTaskListEmpty(filteredTasks.length === 0);
-  // }, [searchTerm, tasks]);
+  useEffect(() => {
+    const storedTasks = window.localStorage.getItem("tasks");
+    if (storedTasks !== null) {
+      dispatch(addTask(JSON.parse(storedTasks)));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const filteredTasks = tasks.filter((task) =>
+    typeof task.title === "string" &&
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 

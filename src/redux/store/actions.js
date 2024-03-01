@@ -1,4 +1,9 @@
-import { ADD_TASK, REMOVE_TASK, UPDATE_TASK } from "./actionsTypes";
+import {
+  ADD_TASK,
+  REMOVE_TASK,
+  UPDATE_TASK,
+  COMPLETE_TASK,
+} from "./actionsTypes";
 
 export const addTask = (title) => ({
   type: ADD_TASK,
@@ -13,4 +18,9 @@ export const removeTask = (id) => ({
 export const updateTask = (id, title) => ({
   type: UPDATE_TASK,
   payload: { id, newTitle: title },
+});
+
+export const completeTask = (id) => ({
+  type: COMPLETE_TASK,
+  payload: id,
 });

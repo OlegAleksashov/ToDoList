@@ -1,4 +1,9 @@
-import { ADD_TASK, REMOVE_TASK, UPDATE_TASK } from "../actionsTypes";
+import {
+  ADD_TASK,
+  REMOVE_TASK,
+  UPDATE_TASK,
+  COMPLETE_TASK,
+} from "../actionsTypes";
 import { v4 as uuidv4 } from "uuid";
 
 export const initialState = {
@@ -37,6 +42,12 @@ export function taskReducer(state = initialState, action) {
             : prevTask
         ),
       };
+
+    // case COMPLETE_TASK:
+    //   return {
+    //     ...state,
+    //     tasklist: state.tasklist.filter((todo) => action.payload !== todo.id),
+    //   };
 
     default:
       return state;
