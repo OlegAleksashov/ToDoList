@@ -2,7 +2,7 @@ import {
   ADD_TASK,
   REMOVE_TASK,
   UPDATE_TASK,
-  COMPLETE_TASK,
+  //COMPLETE_TASK,
 } from "../actionsTypes";
 import { v4 as uuidv4 } from "uuid";
 

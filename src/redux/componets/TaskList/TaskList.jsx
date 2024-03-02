@@ -15,14 +15,14 @@ export const TaskList = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const storedTasks = window.localStorage.getItem("tasks");
-    if (storedTasks !== null) {
+    const storedTasks = localStorage.getItem("tasks"); //JSON.stringify(localStorage.getItem("tasks"));
+    if (storedTasks) {
       dispatch(addTask(JSON.parse(storedTasks)));
     }
-  }, [dispatch]);
+  }, [dispatch, tasks]);
 
   useEffect(() => {
-    window.localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
   const filteredTasks = tasks.filter((task) =>
