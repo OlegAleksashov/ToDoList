@@ -14,13 +14,6 @@ export const TaskList = () => {
   const input = useInput();
   const [searchTerm, setSearchTerm] = useState("");
 
-  // useEffect(() => {
-  //   const storedTasks = localStorage.getItem("tasks"); //JSON.stringify(localStorage.getItem("tasks"));
-  //   if (storedTasks) {
-  //     dispatch(addTask(JSON.parse(storedTasks)));
-  //   }
-  // }, [dispatch, tasks]);
-
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);

@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <header>
-      <div className="data">{date}</div>
+      <div className="date">{date}</div>
       <span>TODO LIST APP</span>
     </header>
   );
