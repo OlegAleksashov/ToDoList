@@ -52,7 +52,12 @@ const Task = ({ task, onDelete }) => {
         </>
       )}
       {!isEditing ? (
-        <Button onClick={onEdit} variant="outlined" endIcon={<EditIcon />}>
+        <Button
+          onClick={onEdit}
+          variant="outlined"
+          disabled={theme === "light"}
+          endIcon={<EditIcon />}
+        >
           Edit
         </Button>
       ) : (
@@ -60,7 +65,12 @@ const Task = ({ task, onDelete }) => {
           Save
         </Button>
       )}
-      <Button onClick={onDelete} variant="outlined" endIcon={<DeleteIcon />}>
+      <Button
+        onClick={onDelete}
+        variant="outlined"
+        disabled={theme === "light"}
+        endIcon={<DeleteIcon />}
+      >
         Remove
       </Button>
     </li>
