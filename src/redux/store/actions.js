@@ -20,7 +20,7 @@ export const updateTask = (id, title) => ({
   payload: { id, newTitle: title },
 });
 
-export const completeTask = (id) => ({
+export const completeTask = (id, isCompleted) => ({
   type: COMPLETE_TASK,
-  payload: id,
+  payload: { id, toggleProperty: isCompleted },
 });

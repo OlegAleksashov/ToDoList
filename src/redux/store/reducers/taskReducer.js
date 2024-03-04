@@ -2,7 +2,7 @@ import {
   ADD_TASK,
   REMOVE_TASK,
   UPDATE_TASK,
-  //COMPLETE_TASK,
+  COMPLETE_TASK,
 } from "../actionsTypes";
 import { v4 as uuidv4 } from "uuid";
 
@@ -30,7 +30,9 @@ export function taskReducer(state = initialState, action) {
     case REMOVE_TASK:
       return {
         ...state,
-        tasklist: state.tasklist.filter((todo) => action.payload !== todo.id),
+        tasklist: state.tasklist
+          .filter((todo) => action.payload !== todo.id)
+          .map((task, index) => ({ ...task, number: index + 1 })),
       };
 
     case UPDATE_TASK:
@@ -43,11 +45,15 @@ export function taskReducer(state = initialState, action) {
         ),
       };
 
-    // case COMPLETE_TASK:
-    //   return {
-    //     ...state,
-    //     tasklist: state.tasklist.filter((todo) => action.payload !== todo.id),
-    //   };
+    case COMPLETE_TASK:
+      return {
+        ...state,
+        tasklist: state.tasklist.map((prevTask) =>
+          prevTask.id === action.payload.id
+            ? { ...prevTask, isCompleted: action.payload.toggleProperty }
+            : prevTask
+        ),
+      };
 
     default:
       return state;

@@ -4,23 +4,22 @@ import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Checkbox } from "@mui/material";
-import { updateTask } from "../../store/actions";
+import { completeTask, updateTask } from "../../store/actions";
 import "./Task.css";
 
 const Task = ({ task, onDelete }) => {
+  const dispatch = useDispatch();
+  const [theme, setTheme] = useState("dark");
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState(task.title);
-  const [theme, setTheme] = useState("dark");
-  const dispatch = useDispatch();
 
   const onEdit = () => {
     setIsEditing(!isEditing);
   };
 
   const onCheckBoxClicked = () => {
-    if (!task.isCompleted) {
-      setTheme(theme === "light" ? "dark" : "light");
-    }
+    dispatch(completeTask(task.id, !task.isCompleted));
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   const onSaveClicked = () => {

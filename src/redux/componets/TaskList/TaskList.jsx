@@ -18,9 +18,10 @@ export const TaskList = () => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  const filteredTasks = tasks.filter((task) =>
-    typeof task.title === "string" &&
-    task.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredTasks = tasks.filter(
+    (task) =>
+      typeof task.title === "string" &&
+      task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const isTaskListEmpty = filteredTasks.length === 0;
