@@ -9,7 +9,7 @@ import "./Task.css";
 
 const Task = ({ task, onDelete }) => {
   const dispatch = useDispatch();
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(task.isCompleted ? "light" : "dark");
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState(task.title);
 
@@ -45,9 +45,9 @@ const Task = ({ task, onDelete }) => {
         />
       ) : (
         <>
-          {task.number}
+          <p>{task.number}</p>
           <p>{task.title}</p>
-          <Checkbox onClick={onCheckBoxClicked} />
+          <Checkbox checked={task.isCompleted} onClick={onCheckBoxClicked} />
         </>
       )}
       {!isEditing ? (
